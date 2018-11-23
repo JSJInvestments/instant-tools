@@ -5,35 +5,47 @@ import clone from 'git-clone';
 import chalk from 'chalk';
 import pjson from '../package.json';
 import { spawn } from 'child_process';
+import pify from 'pify';
+
+const cloneRepo = pify((url, name, callback) => {
+  try {
+    console.log(`${chalk.bold.cyan('Cloning')} ${url}...`);
+    clone(url, name, callback);
+  } catch (error) {
+    console.log(chalk.bold.red(error));
+  }
+});
+
+const installDependencies = pify(async (dir, callback) => {
+  try {
+    console.log(chalk.bold.cyan('Installing dependencies...'));
+    const deps = spawn('npm', ['install'], {
+      cwd: dir,
+      stdio: 'inherit',
+    });
+
+    deps.on('error', error => {
+      console.log(chalk.bold.red(error));
+    });
+
+    deps.on('close', callback);
+  } catch (error) {
+    console.log(chalk.bold.red(error));
+  }
+});
 
 const createApplication = async (type, name, cmd) => {
-  const repoUrl = config.get(`${type}.url`);
-
   console.log(chalk.bold.magenta(`Initialising new ${type} application`));
-  console.log(`${chalk.bold.cyan('Cloning')} ${repoUrl}...`);
 
   try {
-    clone(repoUrl, name, () => {
-      if (cmd.install) {
-        console.log(chalk.bold.cyan('Installing dependencies...'));
-        const deps = spawn('npm', ['install'], {
-          cwd: name,
-          stdio: 'inherit',
-        });
-
-        deps.on('error', () => {
-          console.log(chalk.bold.red(error));
-        });
-
-        deps.on('close', code => {
-          console.log(chalk.bold.cyan('Application created!'));
-        });
-      } else {
-        console.log(chalk.bold.cyan('Application created!'));
-      }
-    });
+    const repoUrl = config.get(`${type}.url`);
+    await cloneRepo(repoUrl, name);
+    if (cmd.install) {
+      await installDependencies(name);
+    }
+    console.log(chalk.bold.cyan('Application created!'));
   } catch (error) {
-    console.error(error);
+    console.log(chalk.bold.red(error));
   }
 };
 
