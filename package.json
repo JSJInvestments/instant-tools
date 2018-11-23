@@ -1,0 +1,42 @@
+{
+  "name": "instant-tools",
+  "version": "1.0.0",
+  "description": "Instant Tools",
+  "author": "Craig Myles (https://instantfeedback.com.au)",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSJInvestments/instant-tools.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require babel-core/register --require @babel/polyfill",
+    "build": "babel ./src -d ./lib",
+    "build:watch": "babel -w ./src -d ./lib",
+    "prepublishOnly": "npm run build"
+  },
+  "bin": {
+    "instant": "./lib/index.js"
+  },
+  "peerDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/runtime": "7.0.0-beta.55",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "config": "^3.0.0",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "git-clone": "^0.1.0"
+  }
+}
