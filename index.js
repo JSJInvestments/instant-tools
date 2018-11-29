@@ -1,15 +1,23 @@
 #!/usr/bin/env node
-import config from 'config';
-import program from 'commander';
-import clone from 'git-clone';
-import chalk from 'chalk';
-import pjson from '../package.json';
-import { spawn } from 'child_process';
-import pify from 'pify';
-import fs from 'fs-extra';
-import rimraf from 'rimraf';
+const program = require('commander');
+const clone = require('git-clone');
+const chalk = require('chalk');
+const pjson = require('./package.json');
+const { spawn } = require('child_process');
+const pify = require('pify');
+const fs = require('fs-extra');
+const rimraf = require('rimraf');
 // import firebase from 'firebase-tools';
 // import path from 'path';
+
+const config = {
+  react: {
+    url: 'https://github.com/JSJInvestments/react-project-template.git',
+  },
+  node: {
+    url: 'https://github.com/JSJInvestments/node-project-template.git',
+  },
+};
 
 const print = {
   start: () => {
@@ -99,7 +107,7 @@ const createApplication = async (type, dir, cmd) => {
   try {
     print.create(type, dir);
 
-    const repoUrl = config.get(`${type}.url`);
+    const repoUrl = config[type].url;
     await cloneRepo(repoUrl, dir);
     if (cmd.install) {
       await installDependencies(dir);
@@ -117,7 +125,7 @@ const createApplication = async (type, dir, cmd) => {
   }
 };
 
-export default async function execute() {
+module.exports = async function execute() {
   try {
     let type;
     let name;
@@ -145,4 +153,4 @@ export default async function execute() {
   } catch (error) {
     console.log(chalk.bold.red(error));
   }
-}
+};
