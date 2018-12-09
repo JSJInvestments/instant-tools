@@ -42,7 +42,7 @@ const print = {
     );
     console.log(
       chalk.bold.magenta(
-        'Please run `firebase use --add` from your new directory to associate your app with a Firebase project'
+        'Please run `git init` and `firebase use --add` from your new directory to initialise your app and associate it  with a Firebase project'
       )
     );
     console.log();
