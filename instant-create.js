@@ -2,31 +2,16 @@
 const program = require('commander');
 const clone = require('git-clone');
 const chalk = require('chalk');
-const pjson = require('./package.json');
 const { spawn } = require('child_process');
 const pify = require('pify');
 const fs = require('fs-extra');
 const rimraf = require('rimraf');
 // import firebase from 'firebase-tools';
-// import path from 'path';
 
-const config = {
-  react: {
-    url: 'https://github.com/JSJInvestments/react-project-template.git',
-  },
-  node: {
-    url: 'https://github.com/JSJInvestments/node-project-template.git',
-  },
-};
+const config = require('./config');
 
 const print = {
-  start: () => {
-    console.log();
-    console.log(chalk.bold.cyan(pjson.name) + ` version ${pjson.version}`);
-    console.log();
-  },
   create: (type, dir) => {
-    // Creating a new React app in [/Users/craig/dev/sandbox/create-react-app-v2]green.
     console.log(
       `${chalk.bold.magenta(
         `Creating a new ${type} app in`
@@ -50,7 +35,7 @@ const print = {
     );
     console.log(
       chalk.bold.magenta(
-        'Please run `firebase use --add` from your new directory to associate your app with a Firebase project'
+        `Please run the following command to initialize your repository and associate the app with a Firebase project: \`cd ${dir} && git init && firebase use --add\``
       )
     );
     console.log();
@@ -125,32 +110,19 @@ const createApplication = async (type, dir, cmd) => {
   }
 };
 
-module.exports = async function execute() {
-  try {
-    let type;
-    let name;
-    let cmd;
-
-    program
-      .version('0.1.0')
-      .command('create <type> <name>')
-      .option('-i, --install', 'Install dependences')
-      .action((t, n, c) => {
-        type = t;
-        name = n;
-        cmd = c;
-      });
-
-    program.parse(process.argv);
-
-    print.start();
-
-    if (type === 'react' || type === 'node') {
-      await createApplication(type, name, cmd);
-    } else {
-      throw 'Unrecognised application type. Options include `react` or `node`';
-    }
-  } catch (error) {
-    console.log(chalk.bold.red(error));
-  }
+module.exports = () => {
+  program
+    .option('-i, --install', 'install dependences')
+    .action(async (type, name, cmd) => {
+      try {
+        if (type === 'react' || type === 'node') {
+          await createApplication(type, name, cmd);
+        } else {
+          throw 'Unrecognised application type. Options include `react` or `node`';
+        }
+      } catch (error) {
+        console.log(chalk.bold.red(error));
+      }
+    })
+    .parse(process.argv);
 };
