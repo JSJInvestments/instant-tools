@@ -1,3 +1,18 @@
+/**
+ * @template react/ui/component
+ * Component template
+ *
+ * @author Craig Myles
+ * @version 1.0.1
+ * Last updated Wed 12 Dec
+ *
+ * Instructions:
+ *
+ * 1. Modify the code as neccessary.
+ *
+ * 2. Delete these instructions from your file.
+ */
+
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { decorate } from '@hbagroup/instant-react/utils/component';

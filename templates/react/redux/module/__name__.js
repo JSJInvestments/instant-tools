@@ -1,5 +1,10 @@
 /**
- * Redux Module Template
+ * @template react/redux/module
+ * Redux module template
+ *
+ * @author Craig Myles
+ * @version 1.0.1
+ * Last updated Wed 12 Dec
  *
  * Instructions:
  *
