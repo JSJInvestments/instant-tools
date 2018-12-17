@@ -1,8 +1,8 @@
 module.exports = {
   react: {
-    url: 'https://github.com/JSJInvestments/react-project-template.git',
+    url: 'https://github.com/cjmyles/instant-react.git',
   },
   node: {
-    url: 'https://github.com/JSJInvestments/node-project-template.git',
+    url: 'https://github.com/cjmyles/instant-express.git',
   },
 };

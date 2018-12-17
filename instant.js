@@ -9,7 +9,7 @@ module.exports = () => {
   console.log();
 
   program
-    .version('0.0.1')
+    .version(pjson.version)
     .description('Instant Tools')
     .command('create <type> <name>', 'create application')
     .alias('c')

@@ -1,18 +1,20 @@
 {
-  "name": "@hbagroup/instant-tools",
-  "version": "0.0.15",
-  "description": "Instant Tools",
-  "author": "Craig Myles (https://instantfeedback.com.au)",
+  "name": "instant-tools",
+  "version": "0.0.16",
+  "description": "Command Line Tools for assisting with creating [`instant`](https://github.com/cjmyles/instant) applications and generating project files.",
+  "author": "Craig Myles",
   "license": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JSJInvestments/instant-tools.git"
+    "url": "git+https://github.com/cjmyles/instant-tools.git"
   },
   "engines": {
     "node": ">=8"
   },
   "keywords": [
-    "javascript"
+    "javascript",
+    "cli",
+    "tools"
   ],
   "preferGlobal": true,
   "bin": {

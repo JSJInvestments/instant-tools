@@ -18,14 +18,14 @@ const templates = [
     id: 'react/redux/module',
     outputDir: 'src/redux/modules',
   },
-  // {
-  //   id: 'react/api/fetch',
-  //   outputDir: 'src/api'
-  // },
-  // {
-  //   id: 'react/api/firestore',
-  //   outputDir: 'src/api',
-  // },
+  {
+    id: 'react/api/fetch',
+    outputDir: 'src/api',
+  },
+  {
+    id: 'react/api/firestore',
+    outputDir: 'src/api',
+  },
 ];
 
 const print = {

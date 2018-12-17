@@ -1,18 +1,30 @@
 # Instant Tools
 
-CLI for assisting with common tasks such as creating applications and generating project files.
+Command Line Tools for assisting with creating [`instant`](https://github.com/cjmyles/instant) applications and generating project files.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [create](#create)
+  - [generate](#generate)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Installation
 
 ```bash
-$ npm i @hbagroup/instant-tools -g
+$ npm i instant-tools -g
 ```
 
 You should now have access to the command `instant` in terminal.
 
-## Commands
+## Usage
 
 In order to execute a command, simply type the name of the command in teminal, after the word `instant`.
+
+## Commands
 
 ### create
 
@@ -43,33 +55,10 @@ $ instant generate <template> <name>
 template: string - the template to generate, e.g 'react/ui/component', 'react/ui/container', 'react/redux/module'
 name: string - the file/variable name to use when creating template
 
-## Development
+## Contributing
 
-To contribute to the codebase, clone the repository and install the dependencies:
-
-```bash
-git clone https://github.com/JSJInvestments/instant-tools.git
-cd instant-tools && npm i
-```
-
-Modify `bin` and `src` files accordingly.
-
-Increment the [semver](https://semver.org/) version in package.json.
-
-Run `npm link` to enable the `instant` command in development.
-
-## Publication
-
-Publish to npm:
-
-```bash
-$ npm publish
-```
-
-## Running Tests
-
-```bash
-npm run test
-```
+We'd greatly appreciate any [contribution](CONTRIBUTING.md) you make.
 
 ## License
+
+[MIT](LICENSE)
