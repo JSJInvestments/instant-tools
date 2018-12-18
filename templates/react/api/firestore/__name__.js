@@ -16,7 +16,7 @@
  */
 
 import { FirestoreRepository } from 'instant-firestore';
-import { db } from '@hbagroup/instant-react/utils/firebase';
+import { db } from 'instant-react-core/utils/firebase';
 
 export default new FirestoreRepository(db, db.collection('__name__'));
 

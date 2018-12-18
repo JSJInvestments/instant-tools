@@ -22,7 +22,7 @@
  */
 
 import { FirestoreRepository } from 'instant-firestore';
-import { db } from '@hbagroup/instant-react/utils/firebase';
+import { db } from 'instant-react-core/utils/firebase';
 
 const api = new FirestoreRepository(db, '__name__'); // or, const api = new FirestoreRepository(db, db.collection('__name__'));
 
