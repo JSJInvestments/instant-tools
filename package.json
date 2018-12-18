@@ -1,6 +1,6 @@
 {
   "name": "instant-tools",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Command Line Tools for assisting with creating [`instant`](https://github.com/cjmyles/instant) applications and generating project files.",
   "author": "Craig Myles",
   "license": "",
